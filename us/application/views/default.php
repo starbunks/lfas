@@ -27,6 +27,8 @@
 		</div><!-- #content -->
 	</div><!-- #primary -->
 
-<?php include Kohana::find_file('views', 'sidebar') ?>
+<?php //include Kohana::find_file('views', 'sidebar') ?>
+<?php include Kohana::find_file('views', 'state_sidebar') ?>
 
 <?php include Kohana::find_file('views', 'footer') ?>
+<!-- #default view>

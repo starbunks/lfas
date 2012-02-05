@@ -31,7 +31,7 @@ class Factory_Sittercity {
 	private static $a_valid_qs = array();
 	private static $base_url;
 		
-	const HOMEURL = 'http://localhost:8888';
+//	const HOMEURL = 'http://localhost:8888';
 	const AMPERSAND = '&';
 	
 	protected $a_valid_query_strings = array('z', 				// zip code
@@ -102,7 +102,7 @@ class Factory_Sittercity {
 	public function setLocation($a_location)
 	{
 		self::$a_location = $a_location;
-		self::$base_url = self::HOMEURL . url::base() 	
+		self::$base_url = Service_Pageutility::getApplicationUrl() 
 										. $a_location['city'] . '/' 
 										. $a_location['state'] . '/' 
 										. $a_location['zip'];
@@ -278,6 +278,7 @@ class Factory_Sittercity {
 	    // page query string
 	    $page_query_string = '&p=';    
 		$pagination = '';
+		$a_page_list = Array();
 		
 	    if ($current_page == $total_number_of_pages) 
 		{
@@ -364,7 +365,7 @@ class Factory_Sittercity {
 			$html .= '<li class="sitterlist">
                 <div class="result_item">
                   <div class="avtar">
-                    <a href="http://www.shareasale.com/r.cfm?b=65638&u=283736&m=10994&urllink=' . $cgpu . '" class="avtar_cont">
+                    <a href="http://www.shareasale.com/r.cfm?b=65638&u=283736&m=10994&urllink=" class="avtar_cont">
                       <div class="img_cont">
                         <img src="' . $caregiver->PhotoUrl . '" />
                       </div>
@@ -373,7 +374,7 @@ class Factory_Sittercity {
                   <div class="result_detail">
                     <div class="result_detail_middle">
                       <div class="result_detail_cont">
-                        <a href="http://www.shareasale.com/r.cfm?b=65638&u=283736&m=10994&urllink=' . $cgpu . '" class="result_name">' . $caregiver->Name . '</a>
+                        <a href="http://www.shareasale.com/r.cfm?b=65638&u=283736&m=10994&urllink=" class="result_name">' . $caregiver->Name . '</a>
                         <p>' . $test_copy . '</p>
                       </div>
                     </div>

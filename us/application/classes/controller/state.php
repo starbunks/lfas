@@ -7,18 +7,18 @@ class Controller_State extends Controller {
     {
 		$state_name = $this->request->param('state');
 		
-		$html_city_list = "<ul>";
-		
-		if (Factory_State::isState($state_name))
+		$html_city_list = '<ul id="citylist">';
+		$found_state_name = Factory_State::isState($state_name);
+		if ($found_state_name)
 		{
-			$query = Factory_State::getZipByState($state_name, 'zip_code');
+			$query = Factory_State::getZipByState($found_state_name, 'zip_code');
 			$results = $query->execute();
 			
 			foreach($results as $zip)
 			{
 				$html_city_list .= '<li>' .
 									Service_Breadcrumb::getPageBreadCrumbCity($zip['city_name'], 
-																			$zip['state_name'], 
+																			$state_name, 
 																			$zip['zip_code'], TRUE) .
 									'</li>';										
 			}
@@ -30,16 +30,11 @@ class Controller_State extends Controller {
 		
 		$html_city_list .= '</ul>';
 		
-		
-		//echo $query;
-		//print_r($a_crap);
-		
-		
 		$v = View::factory('default');
 		//$v->page_name = "Conrollor:State->action_index";
-		$v->tagline = Service_Pageutility::getTageline('', $state_name);
-		$v->page_h1 = Service_Breadcrumb::getPageBreadCrumbState($state_name);
-		$v->page_breadcrumb = Service_Breadcrumb::buildState($state_name);
+		$v->tagline = Service_Pageutility::getTageline('', $found_state_name);
+		$v->page_h1 = Service_Breadcrumb::getPageBreadCrumbState($found_state_name);
+		$v->page_breadcrumb = Service_Breadcrumb::buildState($found_state_name);
 		$v->state_list = $html_city_list;
 		
 		$this->response->body($v);
@@ -89,7 +84,7 @@ class Controller_State extends Controller {
 			
 			// build the curl url
 			$valid_url = Factory_Sittercity::factory()->getBuildUrl($a_valid_qs, 3);
-echo $valid_url;
+
 //			$xml = simplexml_load_string(Factory_Sittercity::factory()->getTestData());
 
 			$curl = new Factory_Curl();
@@ -174,8 +169,6 @@ echo $valid_url;
 		$v->tagline = "Helping Parents Find Child Care";
 		$v->page_h1 = 'Babysitters Across the U.S.';
 		$v->page_breadcrumb = Service_Breadcrumb::getHomePageLink() . ' &gt ' . Service_Breadcrumb::getPageBreadCrumbUs();
-
-		
 		$this->response->body($v);
 	}
 

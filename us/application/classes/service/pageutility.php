@@ -2,10 +2,26 @@
 
 class Service_Pageutility {
 
-	public static function getGlobal()
+	/**
+	* getSiteUrl() - used for absolute path for css, js and theme images
+	*
+	*
+	**/
+	public static function getSiteUrl()
 	{
-		$siteurl = 'http://localhost:8888/lfas.32/';
+		$siteurl = 'http://localhost:8888/lfas.net/';
 		return $siteurl;
+	}
+
+
+	/**
+	* 
+	* getApplicationUrl() - This is the absolute path to the kohana application
+	*
+	**/
+	public static function getApplicationUrl()
+	{
+		return self::getSiteUrl() . 'us/';
 	}
 	
 	public static function getTageline($city_name='', $state_name)
@@ -44,20 +60,11 @@ class Service_Pageutility {
 		return $copy . $location;
 	}
 	
-	/**
-	* 
-	* getSiteUrl - removes the 'us' from the URL::base() function
-	*
-	**/
-	public static function getSiteUrl()
-	{
-		$base_url = URL::base();
-		return trim($base_url, 'us/');
-	}
+
 	
 	public static function getFooterCityList()
 	{
-		$base_url = URL::base();
+		$base_url = self::getApplicationUrl();
 		$html_footer = 
 		'<li><a href="' . $base_url . 'atlanta/georgia/30361" title="Link to Atlanta">Atlanta</a></li>
 		<li><a href="' . $base_url . 'austin/texas/78703" title="Link to Austin">Austin</a></li>
@@ -100,7 +107,7 @@ class Service_Pageutility {
 	
 	public static function getZipSearchForm() 
 	{
-		$html_form = '<form method="get" id="searchform" action="' . URL::base() . 'search">'  .
+		$html_form = '<form method="get" id="searchform" action="' . self::getApplicationUrl() . 'search">'  .
 			'<label for="zip" class="">Find babysitters, nannies near you</label>
 			<input type="text" class="field" name="zip" id="zip" placeholder="in your ZIP code" />
 			<input type="submit" class="submit" name="submit" id="searchsubmitzip" value="Search" />
@@ -111,7 +118,7 @@ class Service_Pageutility {
 	
 	public static function getMainMenu()
 	{
-		$base_url = self::getGlobal();
+		$base_url = self::getSiteUrl();
 
 		$html_menu = '<div class="menu"><ul>
 		<li class="current_page_item"><a href="' . $base_url . '" title="Home">Home</a></li>

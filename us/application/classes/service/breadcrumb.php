@@ -47,7 +47,7 @@ class Service_Breadcrumb {
    */
   	public static function getPageBreadCrumbUs() 
 	{
-    	return '<a href="' . URL::base() . 
+    	return '<a href="' . Service_Pageutility::getApplicationUrl() . 
 			'" title="Sitters Across the United States" rel="bookmark">United States</a>';  
   	}
 
@@ -61,7 +61,7 @@ class Service_Breadcrumb {
   	public static function getPageBreadCrumbState($state_name) 
 	{
 
-    	return '<a href="' . URL::base() . $state_name . '" title="Looking For A Sitter in ' . $state_name . '" rel="bookmark">' . ucfirst($state_name) . '</a>';  
+    	return '<a href="' . Service_Pageutility::getApplicationUrl() . $state_name . '" title="Looking For A Sitter in ' . $state_name . '" rel="bookmark">' . ucfirst($state_name) . '</a>';  
   	}
 
 
@@ -78,7 +78,7 @@ class Service_Breadcrumb {
 
 		$link_title = 'Looking For A Sitter in ' . $city_name . ', ' . $state_name;
 		$html_return_a = '<a href="' . 
-									URL::base() . 
+									Service_Pageutility::getApplicationUrl() . 
 									$city_name . '/' . 
 									$state_name . '/' . 
 									$zip_code . '"  title="' . $link_title . '" rel="bookmark">';
@@ -109,7 +109,7 @@ class Service_Breadcrumb {
 	{
 		$link_title = 'Looking For A Sitter in ' . $city_name . ', ' . $state_name . '  ' . $zip_code;
 		
-    	return '<a href="' . URL::base() . $city_name . '/' . 
+    	return '<a href="' . Service_Pageutility::getApplicationUrl() . $city_name . '/' . 
 											$state_name . '/' . 
 											$zip_code . '" title="' . $link_title . '" rel="bookmark" >' . 	
 											$zip_code . '</a>';  

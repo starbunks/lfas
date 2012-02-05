@@ -80,7 +80,7 @@ Kohana::$environment = constant('Kohana::'.strtoupper($_SERVER['KOHANA_ENV']));
 * - boolean caching enable or disable internal caching FALSE
 */
 Kohana::init(array(
-	'base_url'   => '/lfas.32/us/',
+	'base_url'   => '/lfas.net/us/',
 	'index_file' => 'index.php',
 ));
 

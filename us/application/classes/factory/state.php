@@ -5,11 +5,14 @@ class Factory_State {
 	static function isState($state_name)
 	{
 		$query = DB::select()->from('state')->where('state_url', 'LIKE', $state_name);
+
 		$results = $query->execute();
 		$found = FALSE;
 		foreach($results as $state)
 		{
-		    $found = TRUE;
+		    //$found = TRUE;
+			// Need to return the state name without the hyphen
+			$found = $state['state_name'];
 		}
 		return $found;
 	}

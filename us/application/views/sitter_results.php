@@ -31,3 +31,4 @@
 <?php include Kohana::find_file('views', 'search_sidebar') ?>
 
 <?php include Kohana::find_file('views', 'footer') ?>
+<!-- #sitter_results view -->
