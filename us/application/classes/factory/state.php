@@ -27,13 +27,25 @@ class Factory_State {
 		return DB::select()->from('state')->order_by('state_name', 'ASC');
 	}
 	
-	static function getCityFooter()
-	{
-		$zip_list = "'30361','78703', '02119', '28204', '60622', '44127', '43201', '75205', '80238', '48206', '76102', '06105', '77056', '46202', '90018', '53715', '33144', '53205', '55411', '10055', '32806',  '10055', '85012', '15219', '97204', '02903', '95817', '92123',  '94117', '98102', '63105', '33604', '27608', '20005'";
-		
-		return DB::select()->from('zip_info_state')->where('zip_code', 'IN', $zip_list)->order_by($order_by, $city_name);
-
+	static function getFooterCity()
+	{	
+		$query =  DB::select()->from('name_value')->where('type', '=', 'city')->order_by('name');
+		$results = $query->execute();
+		return $results;
 	}
 	
+
+	/**
+	*	
+	* select ID, post_name, post_title, guid  from lfas_posts where post_parent=0 and post_type='page';
+	*/
+	static function getFooterLast()
+	{
+		$a_select = array('ID','post_name','post_title', 'guid');
+
+		$query =  DB::select_array($a_select)->from('lfas_posts')->where('post_type', '=', 'page')->and_where('post_parent', '=', '0');
+		return $query->execute();
+	}
+
 	
 } // End

@@ -2281,40 +2281,6 @@ p.comment-form-comment {
 	width: 16px;
 }
 
-
-#cityfooter {
-	clear: both; 	
-	background: transparent; 
-	margin: 0 auto; 
-	width: 760px; 	
-	text-align: left;
-}
-
-#cityfooter ul { 
-	position: relative; 
-	overflow: hidden; 
-	list-style: none; 
-	margin: 0px 4px 0px 10px; 
-	padding: 10px 0px 0px; 
-}
-
-#cityfooter ul li { 
-	position: relative; 
-	left: -6px; 
-	float: left; 
-	margin: 0px; 
-	padding: 0px 9px 0px 6px; 
-	background: url( 'http://lookingforasitter.com/wp-content/themes/lookingforasitter/img/list_pipe.gif' ) left no-repeat;
-	white-space:nowrap; 
-	font-size: 12px;
-}
-
-#cityfooter h2 { 
-	font-size: 17px;
-	font-weight: bold;
-}
-
-
 #footerbelow {
 	clear: both; 	
 	background: transparent; 
@@ -2935,10 +2901,55 @@ li.sitterlist {list-style-type:none; margin-bottom: 15px;}
 }
 
 
+/* =lfas
+----------------------------------------------- */
+
 #state-list {
 	position: relative;
 	float: left;
 }
+
+
+#sitemap-page {
+	clear: both; 	
+	background: transparent; 
+	margin: 0 auto; 
+/* width: 760px; 	*/
+	text-align: left;
+}
+
+#cityfooter {
+	clear: both; 	
+	background: transparent; 
+	margin: 0 auto; 
+	width: 760px; 	
+	text-align: left;
+}
+
+#cityfooter ul, sitemap-page ul { 
+	position: relative; 
+	overflow: hidden; 
+	list-style: none; 
+	margin: 0px 4px 0px 10px; 
+	padding: 10px 0px 0px; 
+}
+
+#cityfooter ul li, sitemap-page ul li { 
+	position: relative; 
+	left: -6px; 
+	float: left; 
+	margin: 0px; 
+	padding: 0px 9px 0px 6px; 
+	background: url( 'http://lookingforasitter.com/wp-content/themes/lookingforasitter/img/list_pipe.gif' ) left no-repeat;
+	white-space:nowrap; 
+	font-size: 12px;
+}
+
+#cityfooter h2 { 
+	font-size: 17px;
+	font-weight: bold;
+}
+
 
 
 #citylist { 

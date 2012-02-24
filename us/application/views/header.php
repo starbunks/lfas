@@ -43,7 +43,7 @@
 
 <!--
 						<a href="<?php echo Service_Pageutility::getSiteUrl(); ?>">
-									<img src="http://localhost:8888/lfan/wp-content/uploads/2011/09/pitt-jolie-kids-1000x288.gif" width="1000" height="288" alt="" />
+									<img src="<?php echo Service_Pageutility::getSiteUrl(); ?>wp-content/uploads/2011/09/pitt-jolie-kids-1000x288.gif" width="1000" height="288" alt="" />
 </a>
 -->		
 

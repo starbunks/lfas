@@ -135,7 +135,7 @@ class Controller_State extends Controller {
 	*
 	*/
 	public function action_list()
-	{		
+	{	
 		$query = Factory_State::getStates();
 		$results = $query->execute();
 		$state_list = '';

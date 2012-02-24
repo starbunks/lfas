@@ -2,7 +2,9 @@
 RewriteEngine On
 
 # Installation directory
-RewriteBase /lfas.32/us
+RewriteBase /us/
+
+RewriteRule ^us/alabama http://www.google.com/ [R,L]
 
 # Protect hidden files from being viewed
 <Files .*>

@@ -80,7 +80,7 @@ Kohana::$environment = constant('Kohana::'.strtoupper($_SERVER['KOHANA_ENV']));
 * - boolean caching enable or disable internal caching FALSE
 */
 Kohana::init(array(
-	'base_url'   => '/lfas.net/us/',
+	'base_url'   => '/us/',
 	'index_file' => 'index.php',
 ));
 
@@ -115,6 +115,7 @@ Kohana::modules(array(
 * defaults for the URI.
 */
 
+
 Route::set('search', 'search/<zip>', array('zip' => '[0-9]{5}'))
 	->defaults(array(
 		'controller' => 'search',
@@ -137,14 +138,23 @@ Route::set('us-city-zip', '<city>/<state>/<zip>', array('zip' => '[0-9]{5}'))
 		'city' => NULL,
 		'state' => NULL,
 	));
+
 	
-	
+Route::set('michigantest', 'michigantest')
+	->defaults(array(
+		'controller' => 'michigantest',
+		'action' => 'index',
+		'state' => NULL,
+));
+
+
 Route::set('us', '<state>', array('[a-zA-Z]'))
 		->defaults(array(
 		'controller' => 'state',
 		'action' => 'index',
 		'state' => NULL,
 	));
+
 
 Route::set('default', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(

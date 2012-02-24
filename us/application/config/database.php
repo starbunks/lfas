@@ -10,7 +10,7 @@ return array
   			'username'   => 'root',
   			'password'   => 'root',
   			'persistent' => FALSE,
-  			'database'   => 'lfas.orig',
+  			'database'   => 'lfasnew',
   		),
   		'table_prefix' => '',
   		'charset'      => 'utf8',

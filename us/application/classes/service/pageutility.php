@@ -9,7 +9,9 @@ class Service_Pageutility {
 	**/
 	public static function getSiteUrl()
 	{
-		$siteurl = 'http://localhost:8888/lfas.net/';
+		//postfix is needed b/c WP only stores the http....to.....com
+		$siteurl = Factory_Utility::getSiteUrl() . '/';
+		// echo '<br /> siteurl ['.$siteurl.']';
 		return $siteurl;
 	}
 
@@ -64,6 +66,8 @@ class Service_Pageutility {
 	
 	public static function getFooterCityList()
 	{
+		Factory_State::getFooterCity();
+		
 		$base_url = self::getApplicationUrl();
 		$html_footer = 
 		'<li><a href="' . $base_url . 'atlanta/georgia/30361" title="Link to Atlanta">Atlanta</a></li>

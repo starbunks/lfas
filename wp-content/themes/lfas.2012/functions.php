@@ -594,7 +594,7 @@ function twentyeleven_body_classes( $classes ) {
 
 function get_zip_search_form()
 {
-	$form = '<form method="get" id="searchform" action="' . esc_url( home_url( '/us/search"' ) ) .
+	$form = '<form method="get" id="searchform" action="' . esc_url( home_url( '/us/search' ) ) . '">' .
 		'<label for="zip" class="">Find babysitters, nannies near you</label>
 		<input type="text" class="field" name="zip" id="zip" placeholder="in your ZIP code" />
 		<input type="submit" class="submit" name="submit" id="searchsubmitzip" value="Search" />
@@ -602,4 +602,58 @@ function get_zip_search_form()
 	
 	return $form;
 }
+
+//[test]
+function sitemap_func( $atts )
+{
+	echo '<h2>Pages</h2>';
+	wp_page_menu( array( 'show_home' => 'Blog', 'sort_column' => 'menu_order', 'menu_class' => '' ) );
+	echo '<h2>Categories</h2>';
+	wp_list_categories('title_li=' );	
+	echo '<h2> Monthly Archives</h2>';
+	wp_get_archives();
+	
+//	echo '<div id="sitemap-page">';
+//	echo '<div id="citylist">';
+//	wp_list_pages('title_li=');
+//	wp_list_categories('title_li=' . __('') . '' );
+	// echo '</div>';
+	// echo '</div>';	
+	//echo '<h2> Monthly Archives</h2>';
+	//wp_get_archives(); 
+	
+	// wp_get_archives('type=alpha');
+	// return 'crapola';
+
+
+	echo '<h2> Tags</h2>';
+	$li_start = "<li>"; 
+	$li_end   = "</li>";
+
+	$sitemap_xml = esc_url( home_url( '/' ) ) . 'sitemap.xml';
+ 	$sitemap = simplexml_load_file($sitemap_xml);
+	// production
+ 	// $siteurl_length = 29;
+	// test
+	$siteurl_length = 26;
+	
+	foreach ( $sitemap->url as $url ) 
+	{
+		$loc = $url->loc;
+		$loc_length = strlen($loc);
+		$url_text = substr($loc, $siteurl_length, $loc_length);
+
+		if (stripos($loc, "tag")) 
+		{
+			if (strlen($loc) > $siteurl_length) 
+			{
+				$hmtl_main .= $li_start . '<a href="' . $loc . '">' . $url_text . '</a>' . $li_end; 
+			}
+		}
+	} //end foreach
+	
+	echo $hmtl_main;
+
+}
+add_shortcode( 'sitemap', 'sitemap_func' );
 
